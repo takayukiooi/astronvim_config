@@ -3,6 +3,11 @@ return {
     servers = {
       "dartls",
     },
+    formatting = {
+      disabled = {
+        "intelephense",
+      }
+    },
     setup_handlers = {
       -- add custom handler
       dartls = function(_, opts)
@@ -13,7 +18,6 @@ return {
           local map_opts = { noremap = true, silent = true }
 
           buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', map_opts)
-          buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', map_opts)
           buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)
           buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', map_opts)
         end
@@ -28,6 +32,8 @@ return {
             auto_open = true
           },
         }
+
+        require("telescope").load_extension("flutter")
       end,
     },
     config = {

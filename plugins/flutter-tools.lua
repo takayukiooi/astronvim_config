@@ -14,6 +14,7 @@ return {
           enabled = true
         },
         outline = {
+          open_cmd = "60vnew",
           auto_open = true
         },
       }
