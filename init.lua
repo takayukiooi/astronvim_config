@@ -11,39 +11,46 @@ return {
     setup_handlers = {
       -- add custom handler
       dartls = function(_, opts)
-        opts.on_attach = function(client, bufnr)
-          local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-          local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-          local map_opts = { noremap = true, silent = true }
-
-          buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', map_opts)
-          buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', map_opts)
-        end
-
         require("flutter-tools").setup {
-          lsp = opts,
           fvm = true,
-          widget_guides = {
-            enabled = true
-          },
-          outline = {
-            auto_open = true
-          },
+          lsp = {
+            color = {
+              enabled = false,        -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+              background = false,     -- highlight the background
+              background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
+              foreground = false,     -- highlight the foreground
+              virtual_text = false,   -- show the highlight using virtual text
+            },
+            settings = {
+              showTodos = false,
+              completeFunctionCalls = false,
+              renameFilesWithClasses = "prompt", -- "always"
+              enableSnippets = true,
+              updateImportsOnRename = true,      -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
+            }
+          }
         }
-
-        require("telescope").load_extension("flutter")
+        --       require("telescope").load_extension("flutter")
       end,
     },
     config = {
       dartls = {
         -- any changes you want to make to the LSP setup, for example
-        color = {
-          enabled = true,
+        -- color = {
+        --   enabled = true,
+        -- },
+        init_options = {
+          closingLabels = true,
+          flutterOutline = false,
+          onlyAnalyzeProjectsWithOpenFiles = true,
+          outline = false,
+          suggestFromUnimportedLibraries = true
         },
         settings = {
-          showTodos = true,
-          completeFunctionCalls = true,
+          dart = {
+            showTodos = false,
+            completeFunctionCalls = false,
+          }
         },
       },
     },
