@@ -19,5 +19,9 @@ return {
     opts.indent = {
       disable = { "dart" }
     }
+    opts.swap = {
+      enable = false
+    }
+    return opts
   end
 }
