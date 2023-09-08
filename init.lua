@@ -19,7 +19,7 @@ return {
           fvm = true,
           outline = {
             open_cmd = "60vnew",
-            auto_open = true
+            auto_open = false 
           },
         }
 

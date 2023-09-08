@@ -5,7 +5,11 @@ return {
     event = "LspAttach",
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
     config = function()
-      require("lspsaga").setup({})
+      require("lspsaga").setup({
+        finder = {
+          default = "def+ref+imp"
+        }
+      })
     end,
   },
 }
