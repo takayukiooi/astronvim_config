@@ -15,6 +15,7 @@ return {
         "intelephense",
         "volar",
         "cssls",
+        "markdown_oxide",
         -- add more arguments for adding more language servers
       })
     end,

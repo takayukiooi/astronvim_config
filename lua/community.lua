@@ -9,6 +9,5 @@ return {
   { import = "astrocommunity.colorscheme.bamboo-nvim" },
   { import = "astrocommunity.pack.dart" },
   { import = "astrocommunity.pack.lua" },
-  -- { import = "astrocommunity.git.openingh-nvim" },
   -- import/override with your plugins folder
 }
